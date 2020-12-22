@@ -1,3 +1,22 @@
-.center-text{
-    text-align: center;
+body{
+    font-family: 'Roboto', sans-serif !important;
 }
+
+.container-content h2{
+    text-align: center;
+    color:#422156;
+}
+
+.container-content hr{
+    border-color:#422156;
+    width: 75%;
+    opacity: 0.4;
+}
+
+.product-info p{
+    color:#422156;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');

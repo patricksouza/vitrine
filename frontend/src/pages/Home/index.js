@@ -15,14 +15,15 @@ export default function Home() {
 
         axios.all([
             axios.get('https://wishlist.neemu.com/onsite/impulse-core/ranking/mostpopular.json'),
-            axios.get('https://wishlist.neemu.com/onsite/impulse-core/ranking/pricereduction.json')
+            axios.get('https://wishlist.neemu.com/onsite/impulse-core/ranking/pricereduction.json'),
         ])
             .then(axios.spread((data1, data2) => {
                 var data_popular = data1['data'];
                 var data_price = data2['data'];
                 axios.post('http://localhost:3333/data', {
                     data_popular,
-                    data_price
+                    data_price,
+                    maxProducts: 10
                 })
                     .then(function (response) {
                         ///console.log(response['data']);
@@ -55,39 +56,48 @@ export default function Home() {
     };
 
     var count_popular = 1;
-    var count_price = 1;
     return (
-        <div className="">
-            <h2 className="center-text">Mais vendidos</h2>
-            <div className="">
-                <Carousel responsive={responsive}>
+        <div className="container-content">
+            <h2 className="center-text">Mais Vendidos</h2>
+            <div className="container">
+                <Carousel
+                    ssr={true}
+                    itemClass="carousel-item-padding-40-px"
+                    responsive={responsive}>
                     {productsPopular.map((product) => (
-                        <div className="" key={product.id}>
-                            <div>
-                                {count_popular++}
-                                <img alt="product" src={product.image_src} width={250} />
+                        <div className="product-info" key={product.id}>
+                            <div className="row">
+                                <div className="col">
+                                    {count_popular++}
+                                </div>
+                                <div className="col">
+                                    <img alt="product" src={product.image_src} width={250} />
+                                </div>
                             </div>
                             <div>
                                 {product.name}
                             </div>
-                            <div>
+                            <p className="">
                                 R$ {product.price}
-                            </div>
+                            </p>
                             <div>
                                 10x R$ {(product.price / 10).toFixed(2)}
                             </div>
                         </div>
                     ))}
-                </Carousel>;
-           </div>
-            <h2 className="center-text">Produtos que baixaram de preço</h2>
-            <div className="">
+                </Carousel>
+            </div>
+            <hr></hr>
+            <h2 className="center-text py-2">Produtos que baixaram de preço</h2>
+            <div className="container py-2">
 
-                <Carousel responsive={responsive}>
+                <Carousel
+                    ssr={true}
+                    itemClass="carousel-item-padding-40-px"
+                    responsive={responsive}>
                     {productsPrice.map((product) => (
-                        <div key={product.id}>
+                        <div key={product.id} className="container">
                             <div>
-                                {count_price++}
                                 <img alt="product" src={product.image_src} width={250} />
                             </div>
 
@@ -102,8 +112,8 @@ export default function Home() {
                             </div>
                         </div>
                     ))}
-                </Carousel>;
-           </div>
+                </Carousel>
+            </div>
         </div>
     );
 }
