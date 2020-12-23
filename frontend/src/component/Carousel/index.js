@@ -1,6 +1,7 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import './style.css';
 const axios = require('axios');
 
 class ProductsCarousel extends React.Component {
@@ -72,21 +73,24 @@ class ProductsCarousel extends React.Component {
     var count_popular = 1;
 
     if (error) {
-      return <div>Error: {error.message}</div>;
+      return <div className="center-loading "><div className="loading"></div></div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div className="center-loading "><div className="loading"></div></div>;
     } else {
       return (
-        <div className="container-content">
-          <h5 className="center-text">Mais Vendidos</h5>
+        <div className="container-content py-2">
           <div className="container">
+            <h4>Vitrine de mais populares</h4>
+          </div>
+          <h5 className="center-text">Mais Vendidos</h5>
+          <div className="container py-2">
             <Carousel
               ssr={true}
               itemClass="carousel-item-padding-40-px"
               responsive={responsive}
             >
               {productsPopular.map((product) => (
-                <div className="product-info" key={product.id}>
+                <div className="product-info mx-2" key={product.id}>
                   <div className="row">
                     <div className="col">
                       <img alt="product" src={product.image_src} />
@@ -97,17 +101,21 @@ class ProductsCarousel extends React.Component {
                       </p>
                     </div>
                   </div>
-                  <div>{product.name}</div>
                   <div>
-                    <p className="">R$ {product.price}</p>
-                    <p>10x R$ {(product.price / 10).toFixed(2)}</p>
+                    <span className="">{product.name}</span>
+                    <div>R$ {product.price}</div>
+                    10x R$ {(product.price / 10).toFixed(2)}
                   </div>
                 </div>
               ))}
             </Carousel>
           </div>
-          <hr></hr>
-          <h5 className="center-text py-2">Produtos que baixaram de preço</h5>
+          <div>
+            <div className="container py-5">
+              <h4>Vitrine de ofertas</h4>
+            </div>
+            <h5 className="center-text">Produtos que baixaram de preço</h5>
+          </div>
           <div className="container py-2">
             <Carousel
               ssr={true}
@@ -115,7 +123,7 @@ class ProductsCarousel extends React.Component {
               responsive={responsive}
             >
               {productsPrice.map((product) => (
-                <div key={product.id} className="container">
+                <div className="container mx-2" key={product.id} >
                   <div className="row">
                     <div className="col-0">
                       <p className="product-discount">
@@ -126,10 +134,12 @@ class ProductsCarousel extends React.Component {
                       <img alt="product" src={product.image_src} />
                     </div>
                   </div>
-                  <div>{product.name}</div>
-                  <div>
-                    <p>R$ {product.price}</p>
-                    <p>10x R$ {(product.price / 10).toFixed(2)}</p>
+                  <div className="">
+                    {product.name}
+                    <div>
+                      R$ {product.price}
+                    </div>
+                    10x R$ {(product.price / 10).toFixed(2)}
                   </div>
                 </div>
               ))}

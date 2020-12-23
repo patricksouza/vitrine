@@ -1,0 +1,20 @@
+.loading{
+    animation: is-rotating 1s infinite;
+    border-radius: 100%;
+    border: 8px solid #e5e5e5;
+    border-top-color: #422156;
+    height: 100px;
+    width: 100px;
+}
+
+@keyframes is-rotating {
+    to {
+      transform: rotate(1.5turn);
+    }
+}
+
+.center-loading {
+    position: fixed; /* or absolute */
+    top: 50%;
+    left: 50%;
+  }
