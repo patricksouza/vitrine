@@ -2,15 +2,41 @@ body{
     font-family: 'Roboto', sans-serif !important;
 }
 
-.container-content h2{
+.container-content h5{
     text-align: center;
     color:#422156;
+    font-weight: lighter;
 }
 
 .container-content hr{
     border-color:#422156;
     width: 75%;
     opacity: 0.4;
+}
+
+.container-content .position-count span{
+    background-color: #f3f0f5;
+    color:#422156;
+    padding: 15%;
+    font-weight: bold;
+    font-size: 12px;
+    width: 0;
+    height: 0;
+    border-bottom-left-radius:100%;
+    border-bottom-right-radius: 100%;
+    
+}
+.container-content .product-discount span{
+    background-color: #422156;
+    border-radius: 10%;
+    color:white;
+    font-size: 10px;
+    padding: 30%;
+}
+
+.container-content img{
+    width: 200px;
+    height: 200px;
 }
 
 .product-info p{

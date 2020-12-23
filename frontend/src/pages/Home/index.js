@@ -40,7 +40,7 @@ export default function Home() {
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: 3,
+            items: 4,
             slidesToSlide: 3 // optional, default to 1.
         },
         tablet: {
@@ -58,7 +58,7 @@ export default function Home() {
     var count_popular = 1;
     return (
         <div className="container-content">
-            <h2 className="center-text">Mais Vendidos</h2>
+            <h5 className="center-text">Mais Vendidos</h5>
             <div className="container">
                 <Carousel
                     ssr={true}
@@ -67,28 +67,31 @@ export default function Home() {
                     {productsPopular.map((product) => (
                         <div className="product-info" key={product.id}>
                             <div className="row">
+
                                 <div className="col">
-                                    {count_popular++}
+                                    <img alt="product" src={product.image_src} />
                                 </div>
                                 <div className="col">
-                                    <img alt="product" src={product.image_src} width={250} />
+                                    <p className="position-count"><span>{count_popular++}º</span></p>
                                 </div>
                             </div>
                             <div>
                                 {product.name}
                             </div>
-                            <p className="">
-                                R$ {product.price}
-                            </p>
                             <div>
-                                10x R$ {(product.price / 10).toFixed(2)}
+                                <p className="">
+                                    R$ {product.price}
+                                </p>
+                                <p>
+                                    10x R$ {(product.price / 10).toFixed(2)}
+                                </p>
                             </div>
                         </div>
                     ))}
                 </Carousel>
             </div>
             <hr></hr>
-            <h2 className="center-text py-2">Produtos que baixaram de preço</h2>
+            <h5 className="center-text py-2">Produtos que baixaram de preço</h5>
             <div className="container py-2">
 
                 <Carousel
@@ -97,18 +100,24 @@ export default function Home() {
                     responsive={responsive}>
                     {productsPrice.map((product) => (
                         <div key={product.id} className="container">
-                            <div>
-                                <img alt="product" src={product.image_src} width={250} />
+                            <div className="row">
+                                <div className="col-0">
+                                    <p className="product-discount"><span>50%</span></p>
+                                </div>
+                                <div className="col">
+                                    <img alt="product" src={product.image_src} />
+                                </div>
                             </div>
-
                             <div>
                                 {product.name}
                             </div>
                             <div>
-                                R$ {product.price}
-                            </div>
-                            <div>
-                                10x R$ {(product.price / 10).toFixed(2)}
+                                <p>
+                                    R$ {product.price}
+                                </p>
+                                <p>
+                                      10x R$ {(product.price / 10).toFixed(2)}
+                                </p>
                             </div>
                         </div>
                     ))}
