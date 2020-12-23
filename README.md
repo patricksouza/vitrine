@@ -25,3 +25,16 @@ A api do sistema tem como função integrar os dados fornecidos pelo arquivo cat
 Aplicação que consome o backend para dispor as informações ao cliente.
 
 
+## Como executar o projeto?
+
+### Requisito
+Crie um banco de dados chamado "dbloja"
+
+### Clone
+Faça o clone do projeto utilizando a url acima.
+
+### Instalação
+Execute o comando "npm install" nas pastas frontend e backend. Após isso, estando na pasta backend, digite o comando "npx knex migrate:latest".
+
+### Execução
+Execute o comando "npm start" nas pastas frontend e backend.
