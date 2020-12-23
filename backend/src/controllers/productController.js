@@ -14,10 +14,9 @@ module.exports = {
         await connection('product').select('id')
             .then(async (row) => {
                 if (row.length == []) {
-
                     for (var [key, value] of catalog.entries()) {
                         var img_src = '';
-                        if (String(catalog[key]['status']).toLocaleUpperCase == 'AVAILABLE' || catalog[key]['status'] == 'available') {
+                        if (catalog[key]['status'] == 'AVAILABLE' || catalog[key]['status'] == 'available') {
                             if (catalog[key]['images']['imagem1'] != null) {
                                 img_src = catalog[key]['images']['imagem1'];
                             }
@@ -47,21 +46,21 @@ module.exports = {
                 }
             });
 
+        //Função usada para separa o id dos produtos
         function getProductId(obj_array) {
             var array_res = [];
             Object.entries(obj_array).forEach(([key, value]) => {
-                //console.log(obj_array[key]['recommendedProduct']['id']);
                 array_res.push(obj_array[key]['recommendedProduct']['id']);
             });
             return array_res;
         }
 
-        var dataPrice_id = getProductId(price_id);
-        var dataPopular_id = getProductId(popular_id);
+        var dataPrice_id = getProductId(price_id);//Armazena os id dos produtos
+        var dataPopular_id = getProductId(popular_id);//Armazena os id dos produtos
 
         var popular_products = await connection('product').select('*').whereIn('id', dataPopular_id).limit(maxProducts);
         var price_products = await connection('product').select('*').whereIn('id', dataPrice_id).limit(maxProducts);
-
+        //console.log({popular_products,price_products});
         return response.json({ popular_products, price_products })
     },
 
