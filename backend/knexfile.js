@@ -1,12 +1,15 @@
 module.exports = {
 
   development: {
-    client: 'mysql',
+    client: 'postgresql',
     connection: {
-      host: 'localhost',
-      user: 'root',
-      password: '',
       database: 'dbloja',
+      user: 'postgres',
+      password: 'root'
+    },
+    pool: {
+      min: 2,
+      max: 10
     },
     migrations: {
       directory: __dirname + '/src/database/migrations'

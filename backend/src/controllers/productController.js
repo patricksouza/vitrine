@@ -15,6 +15,7 @@ module.exports = {
             .then(async (row) => {
                 if (row.length == []) {
                     for (var [key, value] of catalog.entries()) {
+                       // console.log(catalog[key]['skus'][0]['properties']['oldPrice']);
                         var img_src = '';
                         if (catalog[key]['status'] == 'AVAILABLE' || catalog[key]['status'] == 'available') {
                             if (catalog[key]['images']['imagem1'] != null) {
@@ -38,11 +39,17 @@ module.exports = {
                                 name: catalog[key]['details']['name'],
                                 price: catalog[key]['price'],
                                 categories: catalog[key]['categories'][0]['name'],
+                                count:catalog[key]['installment']['count'],
+                                oldprice:catalog[key]['skus'][0]['properties']['oldPrice'],
                                 image_src: img_src
                             });
                         }
                     }
-                    await connection('product').insert(data);
+                    try{
+                        await connection('product').insert(data);
+                    }catch(err){   
+                        console.log(err);
+                    }
                 }
             });
 
@@ -60,7 +67,6 @@ module.exports = {
 
         var popular_products = await connection('product').select('*').whereIn('id', dataPopular_id).limit(maxProducts);
         var price_products = await connection('product').select('*').whereIn('id', dataPrice_id).limit(maxProducts);
-        //console.log({popular_products,price_products});
         return response.json({ popular_products, price_products })
     },
 

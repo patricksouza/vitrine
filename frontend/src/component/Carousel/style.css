@@ -1,3 +1,7 @@
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+
 .loading{
     animation: is-rotating 1s infinite;
     border-radius: 100%;
@@ -5,6 +9,16 @@
     border-top-color: #422156;
     height: 100px;
     width: 100px;
+}
+
+.product-oldprice{
+  text-decoration: line-through;
+  font-size: 13px;
+  color:grey;
+}
+
+.product-price span{
+  color:#422156;
 }
 
 @keyframes is-rotating {
@@ -18,3 +32,5 @@
     top: 50%;
     left: 50%;
   }
+
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');

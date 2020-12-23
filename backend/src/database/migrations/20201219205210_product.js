@@ -4,6 +4,8 @@ exports.up = function(knex) {
         table.string('name');
         table.string('price');
         table.string('categories');
+        table.string('count');
+        table.string('oldprice');
         table.string('image_src');
     });
 };

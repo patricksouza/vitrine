@@ -103,8 +103,13 @@ class ProductsCarousel extends React.Component {
                   </div>
                   <div>
                     <span className="">{product.name}</span>
-                    <div>R$ {product.price}</div>
-                    10x R$ {(product.price / 10).toFixed(2)}
+                    <div className="product-oldprice">
+                      R${product.oldprice}
+                    </div>
+                    <div className="product-price">
+                      Por R$<span> {(product.price)},00</span>
+                    </div>
+                    {product.count}x R$ {(product.price / 10).toFixed(2)}
                   </div>
                 </div>
               ))}
@@ -136,10 +141,14 @@ class ProductsCarousel extends React.Component {
                   </div>
                   <div className="">
                     {product.name}
-                    <div>
-                      R$ {product.price}
+
+                    <div className="product-oldprice">
+                      R$ {product.oldprice}
                     </div>
-                    10x R$ {(product.price / 10).toFixed(2)}
+                    <div className="product-price">
+                      Por R$ <span> {(product.price)},00</span>
+                    </div>
+                    {product.count}x R$ {(product.price / 10).toFixed(2)}
                   </div>
                 </div>
               ))}
