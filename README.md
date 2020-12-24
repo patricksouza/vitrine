@@ -11,6 +11,7 @@ de um site.
 * Reactjs
 * Knex
 * Bootstrap
+* Docker
 
 
 ## Estrutura das pastas
