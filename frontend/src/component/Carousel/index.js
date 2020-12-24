@@ -33,7 +33,7 @@ class ProductsCarousel extends React.Component {
             .post("http://localhost:3333/data", {
               data_popular,
               data_price,
-              maxProducts: 10,
+              maxProducts: 16,
             })
             .then((response) => {
               this.setState({
@@ -104,12 +104,12 @@ class ProductsCarousel extends React.Component {
                   <div>
                     <span className="">{product.name}</span>
                     <div className="product-oldprice">
-                      R${product.oldprice}
+                      {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.oldprice)}
                     </div>
                     <div className="product-price">
-                      Por R$<span> {(product.price)},00</span>
+                      Por <span> {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price)}</span>
                     </div>
-                    {product.count}x R$ {(product.price / 10).toFixed(2)}
+                    {product.count}x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.oldprice / product.count)}
                   </div>
                 </div>
               ))}
@@ -132,7 +132,7 @@ class ProductsCarousel extends React.Component {
                   <div className="row">
                     <div className="col-0">
                       <p className="product-discount">
-                        <span>50%</span>
+                        <span>{- (((product.oldprice - product.price)/((product.oldprice + product.price)/2))*100).toFixed(0) }% </span>
                       </p>
                     </div>
                     <div className="col">
@@ -143,12 +143,12 @@ class ProductsCarousel extends React.Component {
                     {product.name}
 
                     <div className="product-oldprice">
-                      R$ {product.oldprice}
+                      {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.oldprice)}
                     </div>
                     <div className="product-price">
-                      Por R$ <span> {(product.price)},00</span>
+                      Por <span>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price)}</span>
                     </div>
-                    {product.count}x R$ {(product.price / 10).toFixed(2)}
+                    {product.count}x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.oldprice / product.count)}
                   </div>
                 </div>
               ))}
