@@ -3,9 +3,11 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
+      host: 'db',
+      user: 'userloja',
+      password: 'root',
       database: 'dbloja',
-      user: 'postgres',
-      password: 'root'
+      port: 5432
     },
     pool: {
       min: 2,

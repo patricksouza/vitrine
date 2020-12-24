@@ -6,9 +6,8 @@ de um site.
 
 # Tecnologias utilizadas
 
-* Docker
 * Nodejs
-* Mysql
+* Postgresql
 * Reactjs
 * Knex
 * Bootstrap
