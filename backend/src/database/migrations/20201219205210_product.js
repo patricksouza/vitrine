@@ -6,6 +6,7 @@ exports.up = function(knex) {
         table.string('categories');
         table.string('count');
         table.float('oldprice');
+        table.float('discount');
         table.string('image_src');
     });
 };
