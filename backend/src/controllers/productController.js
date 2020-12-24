@@ -15,7 +15,6 @@ module.exports = {
             .then(async (row) => {
                 if (row.length == []) {
                     for (var [key, value] of catalog.entries()) {
-                       // console.log(catalog[key]['skus'][0]['properties']['oldPrice']);
                         var img_src = '';
                         if (catalog[key]['status'] == 'AVAILABLE' || catalog[key]['status'] == 'available') {
                             if (catalog[key]['images']['imagem1'] != null) {
@@ -37,17 +36,17 @@ module.exports = {
                             data.push({
                                 id: catalog[key]['id'],
                                 name: catalog[key]['details']['name'],
-                                price: catalog[key]['price'],
+                                price: parseFloat(catalog[key]['price']),
                                 categories: catalog[key]['categories'][0]['name'],
-                                count:catalog[key]['installment']['count'],
-                                oldprice:catalog[key]['skus'][0]['properties']['oldPrice'],
+                                count: catalog[key]['installment']['count'],
+                                oldprice: parseFloat(catalog[key]['skus'][0]['properties']['oldPrice']),
                                 image_src: img_src
                             });
                         }
                     }
-                    try{
+                    try {
                         await connection('product').insert(data);
-                    }catch(err){   
+                    } catch (err) {
                         console.log(err);
                     }
                 }
@@ -66,7 +65,7 @@ module.exports = {
         var dataPopular_id = getProductId(popular_id);//Armazena os id dos produtos
 
         var popular_products = await connection('product').select('*').whereIn('id', dataPopular_id).limit(maxProducts);
-        var price_products = await connection('product').select('*').whereIn('id', dataPrice_id).limit(maxProducts);
+        var price_products = await connection('product').select('name', 'price', 'oldprice', 'count', 'image_src').whereIn('id', dataPrice_id).andWhereRaw('price <> oldprice').limit(maxProducts);
         return response.json({ popular_products, price_products })
     },
 
