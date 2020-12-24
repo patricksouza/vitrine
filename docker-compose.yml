@@ -10,6 +10,7 @@ services:
       POSTGRES_PASSWORD: root
     ports: 
       - 5432:5432
+    restart: unless-stopped
 
   ui: 
     build: ./frontend/
@@ -23,8 +24,9 @@ services:
          
   api:
     build: ./backend/
-    command: sh -c "npm run migrate && docker-compose restart && npm start "
+    command: sh -c "npm run migrate && npm start"
     ports:
      - 3333:3333
     volumes: 
      - ./src:/usr/app/api
+    restart: unless-stopped
