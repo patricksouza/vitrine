@@ -34,6 +34,7 @@ class ProductsCarousel extends React.Component {
               data_popular,
               data_price,
               maxProducts: 16,
+              response_type:'complete'
             })
             .then((response) => {
               this.setState({
@@ -132,7 +133,7 @@ class ProductsCarousel extends React.Component {
                   <div className="row">
                     <div className="col-0">
                       <p className="product-discount">
-                        <span>{- (((product.oldprice - product.price)/((product.oldprice + product.price)/2))*100).toFixed(0) }% </span>
+                        <span>{product.discount}% </span>
                       </p>
                     </div>
                     <div className="col">
