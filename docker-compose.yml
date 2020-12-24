@@ -3,6 +3,7 @@ version: "3"
 services:
   db:
     image: postgres
+    restart: always
     environment: 
       POSTGRES_DB: dbloja
       POSTGRES_USER: userloja 
@@ -22,7 +23,7 @@ services:
          
   api:
     build: ./backend/
-    command: sh -c "npm run migrate && npm start"
+    command: sh -c "npm run migrate && docker-compose restart && npm start "
     ports:
      - 3333:3333
     volumes: 

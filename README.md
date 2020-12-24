@@ -39,7 +39,7 @@ Execute o comando "npm install" nas pastas frontend e backend. Após isso, estan
 ### Execução
 Execute o comando "npm start" nas pastas frontend e backend.
 ou 
-Execute diretamente o comando "docker-compose up"
+Execute diretamente o comando "docker-compose up --build"
 
 Acesse o sistema pela url: http://localhost:3000
 
