@@ -109,7 +109,7 @@ class ProductsCarousel extends React.Component {
                     <div className="product-price">
                       Por <span> {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price)}</span>
                     </div>
-                    {product.count}x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.oldprice / product.count)}
+                    {product.count}x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price / product.count)}
                   </div>
                 </div>
               ))}
@@ -148,7 +148,7 @@ class ProductsCarousel extends React.Component {
                     <div className="product-price">
                       Por <span>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price)}</span>
                     </div>
-                    {product.count}x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.oldprice / product.count)}
+                    {product.count}x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.price / product.count)}
                   </div>
                 </div>
               ))}
