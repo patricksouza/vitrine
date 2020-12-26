@@ -33,13 +33,8 @@ Crie um banco de dados chamado "dbloja"
 ### Clone
 Faça o clone do projeto utilizando a url acima.
 
-### Instalação
-Execute o comando "npm install" nas pastas frontend e backend. Após isso, estando na pasta backend, digite o comando "npx knex migrate:latest".
-
 ### Execução
-Execute o comando "npm start" nas pastas frontend e backend.
-ou 
-Execute diretamente o comando "docker-compose up --build"
+Execute o comando "docker-compose up --build"
 
 Acesse o sistema pela url: http://localhost:3000
 
