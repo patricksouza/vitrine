@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "migrate": "knex migrate:rollback && knex migrate:latest"
+    "migrate": "npx knex migrate:rollback && npx knex migrate:latest"
   },
   "keywords": [],
   "author": "",

@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const routes = require('./routes');
 
-const PORT = 3333;
+const PORT = 3331;
 const HOST = "0.0.0.0";
 
 const app = express();

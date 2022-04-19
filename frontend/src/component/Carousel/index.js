@@ -30,7 +30,7 @@ class ProductsCarousel extends React.Component {
           var data_popular = data1["data"];
           var data_price = data2["data"];
           axios
-            .post("http://localhost:3333/data", {
+            .post("http://localhost:3331/data", {
               data_popular,
               data_price,
               maxProducts: 16,
@@ -91,7 +91,7 @@ class ProductsCarousel extends React.Component {
               responsive={responsive}
             >
               {productsPopular.map((product) => (
-                <div className="product-info mx-2" key={product.id}>
+                <div className="product-info mx-2" key={product}>
                   <div className="row">
                     <div className="col">
                       <img alt="product" src={product.image_src} />
@@ -129,7 +129,7 @@ class ProductsCarousel extends React.Component {
               responsive={responsive}
             >
               {productsPrice.map((product) => (
-                <div className="container mx-2" key={product.id} >
+                <div className="container mx-2" key={product} >
                   <div className="row">
                     <div className="col-0">
                       <p className="product-discount">

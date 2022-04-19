@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:12.14.0
 
 WORKDIR /usr/app/backend
 
@@ -9,6 +9,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3333
+EXPOSE 3331
 
 CMD [ "npm","start" ]
