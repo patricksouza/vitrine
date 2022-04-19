@@ -30,7 +30,7 @@ class ProductsCarousel extends React.Component {
           var data_popular = data1["data"];
           var data_price = data2["data"];
           axios
-            .post("http://localhost:3331/data", {
+            .post("http://localhost:3333/data", {
               data_popular,
               data_price,
               maxProducts: 16,

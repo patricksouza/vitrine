@@ -15,7 +15,7 @@ services:
     build: ./frontend/
     command: npm start
     ports:
-     - 3000:3000
+     - 3001:3000
     volumes: 
      - ./src:/usr/app/src
      - ./public:/usr/app/public
